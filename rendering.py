@@ -68,8 +68,6 @@ class EnvRenderer(pyglet.window.Window):
                 y=-300,
                 anchor_x='center',
                 anchor_y='center',
-                # width=0.01,
-                # height=0.01,
                 color=(255, 255, 255, 255),
                 batch=self.batch)
 
@@ -233,13 +231,6 @@ class EnvRenderer(pyglet.window.Window):
         Returns:
             None
         """
-
-        # if map and poses doesn't exist, raise exception
-        # if self.map_points is None:
-        #     raise Exception('Map not set for renderer.')
-        # if self.poses is None:
-        #     raise Exception('Agent poses not updated for renderer.')
-
         # Initialize Projection matrix
         glMatrixMode(GL_PROJECTION)
         glLoadIdentity()
@@ -272,32 +263,4 @@ class EnvRenderer(pyglet.window.Window):
         Returns:
             None
         """
-
-        # self.ego_idx = obs['ego_idx']
-        # poses_x = obs['poses_x']
-        # poses_y = obs['poses_y']
-        # poses_theta = obs['poses_theta']
-
-        # num_agents = len(poses_x)
-        # if self.poses is None:
-        #     self.cars = []
-        #     for i in range(num_agents):
-        #         if i == self.ego_idx:
-        #             vertices_np = get_vertices(np.array([0., 0., 0.]), CAR_LENGTH, CAR_WIDTH)
-        #             vertices = list(vertices_np.flatten())
-        #             car = self.batch.add(4, GL_QUADS, None, ('v2f', vertices), ('c3B', [172, 97, 185, 172, 97, 185, 172, 97, 185, 172, 97, 185]))
-        #             self.cars.append(car)
-        #         else:
-        #             vertices_np = get_vertices(np.array([0., 0., 0.]), CAR_LENGTH, CAR_WIDTH)
-        #             vertices = list(vertices_np.flatten())
-        #             car = self.batch.add(4, GL_QUADS, None, ('v2f', vertices), ('c3B', [99, 52, 94, 99, 52, 94, 99, 52, 94, 99, 52, 94]))
-        #             self.cars.append(car)
-
-        # poses = np.stack((poses_x, poses_y, poses_theta)).T
-        # for j in range(poses.shape[0]):
-        #     vertices_np = 50. * get_vertices(poses[j, :], CAR_LENGTH, CAR_WIDTH)
-        #     vertices = list(vertices_np.flatten())
-        #     self.cars[j].vertices = vertices
-        # self.poses = poses
-
         self.score_label.text = 'Lap Time: {laptime:.2f}, Ego Lap Count: {count:.0f}'.format(laptime=obs[0], count=obs[1])
