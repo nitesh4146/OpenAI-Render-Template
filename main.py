@@ -1,4 +1,4 @@
-from my_simple_env import *
+from my_env import *
 
 env = mySimpleEnv()
 for i in range(1000):
